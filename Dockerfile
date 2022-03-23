@@ -1,14 +1,11 @@
-FROM node
-
-COPY . /app
+FROM node:alpine
 
 WORKDIR /app
 
+COPY package.json .
+
 RUN npm install
 
-ENV PORT=80
-ENV SERVER_ENV=test
+COPY . .
 
-EXPOSE 80
-
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
